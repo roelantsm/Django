@@ -1,0 +1,15 @@
+{% extends "Eshop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div>
+    <h1>createProduct</h1>
+     <form method = "post" enctype="multipart/form-data">
+      {% csrf_token %}
+       {{ form|crispy}}
+
+        <button type="submit">
+          submit
+        </button>
+      </form>
+  </div>
+{% endblock content %}

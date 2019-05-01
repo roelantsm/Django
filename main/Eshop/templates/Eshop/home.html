@@ -1,0 +1,68 @@
+{% extends "Eshop/base.html" %}
+{% block content %}
+
+    <h2>Alle producten in korting</h2>
+        <table>
+
+        <tr>
+            <th>naam</th>
+            <th>prijs</th>
+            <th>btw</th>
+            <th>merk</th>
+            <th>category</th>
+
+
+        </tr>
+
+        {% for product in niewste %}
+        <tr>
+        <td>{{ product.naam }}</td>
+        <td>{{ product.prijs }}</td>
+        <td>{{ product.btw }}</td>
+        <td>{{ product.merk }}</td>
+   
+        <td>{{ product.category.soort }}</td>
+    
+        <td>
+        <div class="card-action">
+            <a href="{% url 'Eshop:product' id=product.id  %}">Details</a>
+        </div>
+        </td>
+
+        </tr>
+    {% endfor %}
+    </table>
+
+
+    <h2>nieuwste producten</h2>
+
+      <table>
+
+        <tr>
+            <th>naam</th>
+            <th>prijs</th>
+            <th>btw</th>
+            <th>merk</th>
+            <th>category</th>
+
+
+        </tr>
+
+      {% for product in kortingen %}
+         <tr>
+        <td>{{ product.naam }}</td>
+        <td>{{ product.prijs }}</td>
+        <td>{{ product.btw }}</td>
+        <td>{{ product.merk }}</td>
+   
+        <td>{{ product.category.soort }}</td>
+    
+        <td>
+        <div class="card-action">
+            <a href="{% url 'Eshop:product' id=product.id  %}">Details</a>
+        </div>
+        </td>
+
+        </tr>
+    {% endfor %}
+{% endblock content %}

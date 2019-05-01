@@ -1,0 +1,29 @@
+{% extends "Eshop/base.html" %}
+{% block content %}
+    <h1>Product</h1>
+
+    <div>
+    <p>naam:      {{ object.naam }}              </p>
+    <p>prijs:     {{ object.prijs }}             </p>
+    <p>btw:       {{ object.btw }}               </p>
+    <p>merk:      {{ object.merk }}              </p>
+    <p>category:  {{ object.category.soort }}    </p>
+
+         <div class="col-md-4"> 
+            <img src="{{ object.image.url }}" /> 
+        </div> 
+
+    <div>
+        <form action="{% url 'Eshop:update_cart' id=object.id  %}" method="post">
+            {% csrf_token %}
+            <input name='qty' type='number' />
+            <input type='submit' value="add to cart"/>
+        </form>
+    </div>
+
+    <a href="{% url 'Eshop:update_cart' id=object.id %}"> add-to-cart </a>
+   
+
+   
+    </div>
+{% endblock content %}

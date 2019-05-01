@@ -1,0 +1,20 @@
+{% extends "Eshop/base.html" %}
+{% block content %}
+    <h1>Custom2 admin</h1>
+    <ul>
+    {% for category in categorys %}
+        <li>{{ category.soort }}</li>
+    {% endfor %}
+    </ul>
+
+    <div>
+    <form method="post">
+      {% csrf_token %}
+        {{ form }}
+
+        <button type="submit">
+          submit
+        </button>
+      </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "Eshop/base.html" %}
+{% block content %}
+    <h1>Cart</h1>
+   {% if empty %}
+    <p>your card is empty</p>
+   {% else %}
+    <table>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        {% for item in cart.cartitem_set.all %}
+        <tr>
+            <td> {{ item.product }} </td>
+            <td> {{ item.product.prijs }} </td>
+            <td> {{ item.quantity }} </td>
+            <td> <a href="{% url 'Eshop:cartDelete' id=item.product.id  %}"> remove </a> </td>
+        </tr>
+        {% endfor %}
+        </table>
+    <div>Total   {{ cart.total }} </div>
+
+    <div>Total Products  {{ count }} </div>
+
+
+    <a href="{% url 'Eshop:order' id=cart.id  %}"> Order </a>
+
+   {% endif %}
+{% endblock content %}

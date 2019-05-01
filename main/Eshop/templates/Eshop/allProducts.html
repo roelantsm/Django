@@ -1,0 +1,33 @@
+{% extends "Eshop/base.html" %}
+{% load static %}
+{% block content %}
+    <h1>Catalogus</h1>
+   <div class="row">
+        {% for product in products %}
+        <div class="col s12">
+            <div class="card hoverable">
+                <div class="card-content">
+                    <span class="card-title"> {{ product.naam }}</span>
+                        <p>{{ product.naam }}</p>
+                        <p>{{ product.prijs }} euro</p>
+                        <p>{{ product.btw }} %btw</p>
+                        <p>{{ product.merk }}</p>
+                        <p>{{ product.category.soort }}</p>
+
+                        
+                        <img src="{{ product.image.url }}" /> 
+                                
+                <div class="card-action">
+                    <a href="{% url 'Eshop:product' id=product.id  %}">Details</a>
+                </div>
+            </div>
+        </div>                           
+        {% endfor %}
+    </div>
+
+    {% if user.is_superuser %}
+    <div class="">
+        <a href="{% url 'Eshop:createProduct'  %}">Create Product</a>
+    </div
+    {% endif %}
+{% endblock content %}

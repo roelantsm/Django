@@ -1,0 +1,21 @@
+{% extends "Eshop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Custom admin</h1>
+    <ul>
+    {% for category in categorys %}
+        <li>{{ category.soort }}</li>
+    {% endfor %}
+    </ul>
+
+    <div>
+    <form method="post">
+      {% csrf_token %}
+        {{ form|crispy }}
+
+        <button type="submit">
+          submit
+        </button>
+      </form>
+    </div>
+{% endblock content %}
